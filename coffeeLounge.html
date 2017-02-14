@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head> 
+	<meta charset="utf-8">
+	<title> PHP InputHandling </title>
+</head>
+<body> 
+<h4>Welcome to CoffeeLounge</h4>
+<form method="POST" action="processReceipt.php">
+<h3> Beverages </h3>
+Coffee: Kshs 40  <input type="checkbox" value="coffee" name="beverages[]" /> <br/>
+Tea: Kshs 30  <input type="checkbox" value="tea" name="beverages[]" /> <br/>
+Milk: Kshs 60  <input type="checkbox" value="milk" name="beverages[]" /> <br/>
+Porridge Mug: Kshs 50  <input type="checkbox" value="porridge" name="beverages[]" /> <br/>
+
+<h3> Snacks </h3>
+Blackforest: Kshs 150  <input type="checkbox" value="blackforest" name="snacks[]" /> <br/>
+Lemon Cake: Kshs 100  <input type="checkbox" value="lemoncake" name="snacks[]" /> <br/>
+Carrot Cake: Kshs 120  <input type="checkbox" value="carrotcake" name="snacks[]" /> <br/>
+
+<h3> Main meals </h3>
+Chicken burger: Kshs 320  <input type="checkbox" value="chickenburger" name="mainmeals[]" /> <br/>
+Peri peri chips: Kshs 180  <input type="checkbox" value="periperichips" name="mainmeals[]" /> <br/>
+Liver & rice: Kshs 380  <input type="checkbox" value="liverrice" name="mainmeals[]" /> <br/>
+Steak roll: Kshs 400  <input type="checkbox" value="steakroll" name="mainmeals[]" /> <br/>
+<p/>
+Cash Given: <input type="textarea" name="cashGiven" width="40dp" height="20dp"/>
+<p/>
+<input type="submit" value="Process Receipt"/>
+</form>
+</body>
+</html>
