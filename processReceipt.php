@@ -6,7 +6,7 @@
 </head>
 <body> 
 <?php 
-$total=0;
+ $total=0;
 $cashGiven = $_POST['cashGiven'];
 $balanceDue = 0;
 // set the default timezone to use. Available since PHP 5.1
@@ -15,9 +15,71 @@ $time = time();
 $currentDate = date('l, jS F Y', $time);
 
 $currentTime = date('h:i a', $time);
-
-?>
-
+/* create only one class since the various items 
+share properties
+*/
+	class cafeMeals{
+		//properties
+		public $price;
+		public $description;
+	}
+	//object tea
+	$tea = new cafeMeals;
+	//set properties
+	$tea->price=30;
+	$tea->description="Tea: Kshs.30";
+	//object coffee
+	$coffee = new cafeMeals;
+	$coffee->price=40;
+	$coffee->description="Coffee: Kshs.40";
+	//object milk
+	$milk = new cafeMeals;
+	$milk->price=60;
+	$milk->description="Milk: Kshs.60";
+	//object espresso
+	$espresso = new cafeMeals;
+	$espresso->price=50;
+	$espresso->description="Espresso Mug: Kshs.90";
+		//object blackforest
+	$blackforest = new cafeMeals;
+	$blackforest->price=150;
+	$blackforest->description="Blackforest: Kshs.150";
+		//object lemoncake
+	$lemoncake = new cafeMeals;
+	$lemoncake->price=100;
+	$lemoncake->description="Lemon cake: Kshs.100";
+		//object carrotcake
+	$carrotcake = new cafeMeals;
+	$carrotcake->price=120;
+	$carrotcake->description="Carrot Cake: Kshs.120";
+			//object chickenburger
+	$chickenburger = new cafeMeals;
+	$chickenburger->price=320;
+	$chickenburger->description="Chicken Burger: Kshs.320";
+			//object periperichips
+	$periperichips = new cafeMeals;
+	$periperichips->price=180;
+	$periperichips->description="Periperi chips: Kshs.180";
+			//object liverrice
+	$liverrice = new cafeMeals;
+	$liverrice->price=380;
+	$liverrice->description="Liver Rice: Kshs.380";
+			//object steakroll
+	$steakroll = new cafeMeals;
+	$steakroll->price=400;
+	$steakroll->description="Steakroll: Kshs.400";
+	
+	/* function to print selected item 
+	and update the total variable
+	*/
+	function printDetails($menuItem)
+	{
+		global $total;
+		$total+=$menuItem->price;
+		echo "<li> $menuItem->description </li>";
+	}
+	?>
+	
 <h2>CoffeeLounge Cafe: </h2>
 Date: <?php echo $currentDate?>
 <br/>
@@ -28,19 +90,15 @@ Time: <?php echo $currentTime?>
 		if(!empty($_POST['beverages'])){
 	 foreach ($_POST['beverages'] as $drink) { 
 	 if($drink==='coffee'){
-		$total+=40;
-		echo "<li>$drink Kshs 40</li>"; 
+		printDetails($coffee);
 	 }else if($drink==='tea')
 	 {
-		echo "<li>$drink Kshs 30</li>";
-		$total+=30;
+		printDetails($tea);
      }else if($drink==='milk')
 	 {
-        echo "<li>$drink Kshs 60</li>";
-		$total+=60;
-     }else if($drink==='porrigde'){
-        echo "<li>$drink Kshs 50</li>"; 
-		$total+=50;
+		printDetails($milk);
+     }else if($drink==='espresso'){
+		printDetails($espresso);
 	 }
 	 }
 		}else{
@@ -53,14 +111,11 @@ Time: <?php echo $currentTime?>
 		if(!empty($_POST['snacks'])){
 	 foreach ($_POST['snacks'] as $t) {
      if($t==='blackforest'){
-        $total+=150;		 
-	    echo "<li>$t kshs 150</li>";
+		printDetails($blackforest);
      }else if($t==='lemoncake'){
-		 $total+=100;
-        echo "<li>$t Kshs 100</li>"; 
+		printDetails($lemoncake);
      }else if($t==='carrotcake'){
-		 $total+=120;
-        echo "<li>$t Kshs 120</li>"; 		 
+		printDetails($carrotcake);	
 	 }
 	 }
 		}else{
@@ -75,19 +130,15 @@ Time: <?php echo $currentTime?>
 	 {	 
 	 foreach ($_POST['mainmeals'] as $meals) { 
 	 if($meals==='chickenburger'){
-		$total+=320;
-		echo "<li>$meals Kshs 320</li>"; 
+		printDetails($chickenburger);
 	 }else if($meals==='periperichips')
 	 {
-		echo "<li>$meals Kshs 180</li>";
-		$total+=180;
+		printDetails($periperichips);
      }else if($meals==='liverrice')
 	 {
-        echo "<li>$meals Kshs 380</li>";
-		$total+=380;
+		printDetails($liverrice);
      }else if($meals==='steakroll'){
-        echo "<li>$meals Kshs 400</li>"; 
-		$total+=400;
+		printDetails($steakroll);
 	 } 
 	 }
 	 }else{
@@ -106,5 +157,6 @@ Total Cost: <?php echo $total;
 			//reset total to zero
 			$total=0;
 			?>
+
 </body>
 </html>
